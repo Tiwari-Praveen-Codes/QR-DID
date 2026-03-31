@@ -111,7 +111,21 @@ export default function VerifierPage() {
     }
   }, [addLog]);
 
+  const [scannedProof, setScannedProof] = useState<string | null>(null);
   const hasProof = !!sessionStorage.getItem('qrdid_proof');
+
+  const handleQRScan = useCallback((data: string) => {
+    setScannedProof(data);
+    addLog({ type: 'success', text: 'QR code scanned successfully' });
+    try {
+      const parsed = JSON.parse(data);
+      addLog({ type: 'data', text: `Merkle root: ${parsed.r?.slice(0, 32)}...` });
+      addLog({ type: 'data', text: `Disclosed fields: ${parsed.d?.join(', ')}` });
+      addLog({ type: 'info', text: 'QR proof received — click Verify to check' });
+    } catch {
+      addLog({ type: 'data', text: `Raw payload received (${data.length} chars)` });
+    }
+  }, [addLog]);
 
   return (
     <div className="min-h-screen bg-background">
