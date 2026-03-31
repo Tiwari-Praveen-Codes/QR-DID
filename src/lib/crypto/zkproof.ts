@@ -1,4 +1,4 @@
-import { sha256 } from '@noble/hashes/sha256';
+import { sha256 } from '@noble/hashes/sha2';
 import { buildMerkleTree, generateMerkleProof, verifyMerkleProof, type MerkleProof } from './merkle';
 import { signMessage, verifySignature, type SphincsKeyPair, type SphincsSignature } from './sphincs';
 

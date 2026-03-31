@@ -36,8 +36,8 @@ export async function generateKeyPair(): Promise<SphincsKeyPair> {
 
 export async function signMessage(message: Uint8Array, secretKey: Uint8Array): Promise<SphincsSignature> {
   const signature = slh_dsa_sha2_128f.sign(secretKey, message);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', message);
-  const messageHash = toHex(new Uint8Array(hashBuffer));
+  const hashBytes = sha256(message);
+  const messageHash = toHex(hashBytes);
   
   return {
     signature,
