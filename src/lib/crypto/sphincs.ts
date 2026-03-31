@@ -1,4 +1,5 @@
-import { slh_dsa_sha2_128f } from '@noble/post-quantum/slh-dsa';
+import { slh_dsa_sha2_128f } from '@noble/post-quantum/slh-dsa.js';
+import { sha256 } from '@noble/hashes/sha2.js';
 
 export interface SphincsKeyPair {
   publicKey: Uint8Array;
