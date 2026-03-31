@@ -207,6 +207,7 @@ export default function WalletPage() {
                 <CredentialCard
                   fields={fields}
                   onToggleField={handleToggleField}
+                  generating={generating}
                 />
 
                 {/* Generate proof button */}
