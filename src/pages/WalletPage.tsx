@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Key, Fingerprint, Send, Loader2 } from 'lucide-react';
+import QRProofDisplay from '@/components/QRProofDisplay';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import CredentialCard from '@/components/CredentialCard';
@@ -229,18 +230,33 @@ export default function WalletPage() {
                 </Button>
 
                 {proof && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="rounded-lg border border-success/20 bg-success/5 px-4 py-3 text-center"
-                  >
-                    <p className="text-sm font-medium text-success">
-                      ✓ Proof ready — go to Verifier to submit
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Generated in {proof.metadata.generationTimeMs.toFixed(0)}ms
-                    </p>
-                  </motion.div>
+                  <>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="rounded-lg border border-success/20 bg-success/5 px-4 py-3 text-center"
+                    >
+                      <p className="text-sm font-medium text-success">
+                        ✓ Proof ready — scan QR on Verifier or navigate there directly
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Generated in {proof.metadata.generationTimeMs.toFixed(0)}ms
+                      </p>
+                    </motion.div>
+
+                    <QRProofDisplay
+                      proofPayload={JSON.stringify({
+                        r: proof.proof.merkleRoot,
+                        n: proof.proof.nullifier,
+                        c: proof.proof.commitment,
+                        d: proof.metadata.disclosedFields,
+                        x: proof.metadata.redactedFields,
+                        t: proof.metadata.generatedAt,
+                        p: proof.proof.protocol,
+                        s: proof.sphincsSignature.signatureHex,
+                      })}
+                    />
+                  </>
                 )}
               </>
             )}

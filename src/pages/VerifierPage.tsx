@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, Loader2 } from 'lucide-react';
+import { Upload, Loader2, ScanLine } from 'lucide-react';
+import QRScanner from '@/components/QRScanner';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import VerifierPanel from '@/components/VerifierPanel';
@@ -110,7 +111,21 @@ export default function VerifierPage() {
     }
   }, [addLog]);
 
+  const [scannedProof, setScannedProof] = useState<string | null>(null);
   const hasProof = !!sessionStorage.getItem('qrdid_proof');
+
+  const handleQRScan = useCallback((data: string) => {
+    setScannedProof(data);
+    addLog({ type: 'success', text: 'QR code scanned successfully' });
+    try {
+      const parsed = JSON.parse(data);
+      addLog({ type: 'data', text: `Merkle root: ${parsed.r?.slice(0, 32)}...` });
+      addLog({ type: 'data', text: `Disclosed fields: ${parsed.d?.join(', ')}` });
+      addLog({ type: 'info', text: 'QR proof received — click Verify to check' });
+    } catch {
+      addLog({ type: 'data', text: `Raw payload received (${data.length} chars)` });
+    }
+  }, [addLog]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -129,6 +144,22 @@ export default function VerifierPage() {
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           {/* Left column — Verification */}
           <div className="space-y-6">
+            {/* QR Scanner */}
+            <QRScanner onScan={handleQRScan} />
+
+            {scannedProof && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="rounded-lg border border-primary/20 bg-primary/5 px-4 py-3"
+              >
+                <p className="text-xs font-medium text-primary">✓ QR Proof Received</p>
+                <p className="mt-1 font-mono text-xs text-muted-foreground truncate">
+                  {scannedProof.slice(0, 80)}...
+                </p>
+              </motion.div>
+            )}
+
             <Button
               onClick={handleVerify}
               disabled={verifying}
@@ -142,8 +173,8 @@ export default function VerifierPage() {
                 </>
               ) : (
                 <>
-                  <Upload className="mr-2 h-4 w-4" />
-                  {hasProof ? 'Verify Submitted Proof' : 'No Proof Available'}
+                  <ScanLine className="mr-2 h-4 w-4" />
+                  {hasProof || scannedProof ? 'Verify Proof' : 'No Proof Available'}
                 </>
               )}
             </Button>
