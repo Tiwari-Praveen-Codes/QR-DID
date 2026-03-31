@@ -42,6 +42,7 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-16">
+        <QuantumParticles />
         <div className="pointer-events-none absolute inset-0 grid-quantum" />
         <div className="container relative mx-auto px-4 pb-20 pt-24 md:pt-32">
           <motion.div
