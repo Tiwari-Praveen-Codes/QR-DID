@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Shield, Lock, Eye, Cpu, ArrowRight, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
+import QuantumParticles from '@/components/QuantumParticles';
 
 const features = [
   {
