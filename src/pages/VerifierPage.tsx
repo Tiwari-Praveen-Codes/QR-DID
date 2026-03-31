@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, Loader2 } from 'lucide-react';
+import { Upload, Loader2, ScanLine } from 'lucide-react';
+import QRScanner from '@/components/QRScanner';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import VerifierPanel from '@/components/VerifierPanel';
