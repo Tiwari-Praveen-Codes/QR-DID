@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Key, Fingerprint, Send, Loader2 } from 'lucide-react';
+import QRProofDisplay from '@/components/QRProofDisplay';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import CredentialCard from '@/components/CredentialCard';
