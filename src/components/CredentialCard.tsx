@@ -15,13 +15,13 @@ const fieldVariants = {
     filter: 'blur(0px)',
     opacity: 1,
     x: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 },
+    transition: { type: 'spring' as const, stiffness: 300, damping: 24 },
   },
   redacted: {
     filter: 'blur(6px)',
     opacity: 0.35,
     x: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 },
+    transition: { type: 'spring' as const, stiffness: 300, damping: 24 },
   },
 };
 
@@ -29,12 +29,12 @@ const badgeVariants = {
   disclosed: {
     backgroundColor: 'hsl(var(--primary) / 0.15)',
     scale: 1,
-    transition: { type: 'spring', stiffness: 400, damping: 20 },
+    transition: { type: 'spring' as const, stiffness: 400, damping: 20 },
   },
   redacted: {
     backgroundColor: 'hsl(var(--secondary))',
     scale: 1,
-    transition: { type: 'spring', stiffness: 400, damping: 20 },
+    transition: { type: 'spring' as const, stiffness: 400, damping: 20 },
   },
 };
 
