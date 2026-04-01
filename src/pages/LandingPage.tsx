@@ -41,7 +41,7 @@ export default function LandingPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16">
+      <section className="relative overflow-hidden pt-16" data-tour="hero-section">
         <QuantumParticles />
         <div className="pointer-events-none absolute inset-0 grid-quantum" />
         <div className="container relative mx-auto px-4 pb-20 pt-24 md:pt-32">
