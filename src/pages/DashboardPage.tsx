@@ -105,7 +105,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Vulnerable systems */}
-        <div className="mt-12">
+        <div className="mt-12" data-tour="threat-table">
           <h2 className="text-lg font-bold text-foreground">Vulnerable Credential Systems</h2>
           <div className="mt-4 space-y-4">
             {threats.map((threat, i) => (
