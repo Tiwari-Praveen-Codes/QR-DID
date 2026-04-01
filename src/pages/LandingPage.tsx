@@ -86,7 +86,7 @@ export default function LandingPage() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-border bg-secondary/20">
+      <section className="border-y border-border bg-secondary/20" data-tour="stats-section">
         <div className="container mx-auto grid grid-cols-2 gap-px md:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div

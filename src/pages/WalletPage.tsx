@@ -219,6 +219,7 @@ export default function WalletPage() {
                   disabled={generating || disclosedCount === 0}
                   size="lg"
                   className="w-full bg-gradient-quantum text-primary-foreground shadow-glow hover:opacity-90 disabled:opacity-40"
+                  data-tour="proof-generate-btn"
                 >
                   {generating ? (
                     <>

@@ -165,6 +165,7 @@ export default function VerifierPage() {
               disabled={verifying}
               size="lg"
               className="w-full bg-gradient-quantum text-primary-foreground shadow-glow hover:opacity-90"
+              data-tour="verify-btn"
             >
               {verifying ? (
                 <>
