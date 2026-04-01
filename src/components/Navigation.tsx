@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X } from 'lucide-react';
+import { Shield, Menu, X, Compass } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useWalkthrough } from './WalkthroughContext';
 
 const navItems = [
   { path: '/', label: 'Home' },
