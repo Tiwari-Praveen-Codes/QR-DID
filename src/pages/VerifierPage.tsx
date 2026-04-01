@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import QuantumParticles from '@/components/QuantumParticles';
 import { motion } from 'framer-motion';
 import { Upload, Loader2, ScanLine } from 'lucide-react';
 import QRScanner from '@/components/QRScanner';
