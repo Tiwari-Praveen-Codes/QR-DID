@@ -41,7 +41,7 @@ export default function LandingPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16">
+      <section className="relative overflow-hidden pt-16" data-tour="hero-section">
         <QuantumParticles />
         <div className="pointer-events-none absolute inset-0 grid-quantum" />
         <div className="container relative mx-auto px-4 pb-20 pt-24 md:pt-32">
@@ -71,7 +71,7 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button asChild size="lg" className="bg-gradient-quantum font-semibold text-primary-foreground shadow-glow hover:opacity-90 px-8">
+              <Button asChild size="lg" className="bg-gradient-quantum font-semibold text-primary-foreground shadow-glow hover:opacity-90 px-8" data-tour="open-wallet-btn">
                 <Link to="/wallet">
                   Open Wallet
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -86,7 +86,7 @@ export default function LandingPage() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-border bg-secondary/20">
+      <section className="border-y border-border bg-secondary/20" data-tour="stats-section">
         <div className="container mx-auto grid grid-cols-2 gap-px md:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div

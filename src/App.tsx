@@ -8,6 +8,8 @@ import WalletPage from "./pages/WalletPage";
 import VerifierPage from "./pages/VerifierPage";
 import DashboardPage from "./pages/DashboardPage";
 import NotFound from "./pages/NotFound";
+import { WalkthroughProvider } from "./components/WalkthroughContext";
+import WalkthroughOverlay from "./components/WalkthroughOverlay";
 
 const queryClient = new QueryClient();
 
@@ -17,13 +19,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/wallet" element={<WalletPage />} />
-          <Route path="/verifier" element={<VerifierPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <WalkthroughProvider>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/wallet" element={<WalletPage />} />
+            <Route path="/verifier" element={<VerifierPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <WalkthroughOverlay />
+        </WalkthroughProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

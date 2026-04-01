@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X } from 'lucide-react';
+import { Shield, Menu, X, Compass } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useWalkthrough } from './WalkthroughContext';
 
 const navItems = [
   { path: '/', label: 'Home' },
@@ -13,6 +14,7 @@ const navItems = [
 export default function Navigation() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { start, active } = useWalkthrough();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
@@ -42,6 +44,15 @@ export default function Navigation() {
               {item.label}
             </Link>
           ))}
+          {!active && (
+            <button
+              onClick={start}
+              className="ml-2 flex items-center gap-1.5 rounded-md border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
+            >
+              <Compass className="h-3.5 w-3.5" />
+              Guided Tour
+            </button>
+          )}
         </div>
 
         {/* Mobile toggle */}

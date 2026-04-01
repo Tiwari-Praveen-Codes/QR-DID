@@ -163,6 +163,7 @@ export default function WalletPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="rounded-xl border border-dashed border-border bg-gradient-card p-8 text-center"
+                data-tour="keygen-section"
               >
                 <Key className="mx-auto h-10 w-10 text-primary/40" />
                 <h3 className="mt-4 text-base font-semibold text-foreground">Generate SPHINCS+ Keypair</h3>
@@ -204,11 +205,13 @@ export default function WalletPage() {
                 )}
 
                 {/* Credential card */}
-                <CredentialCard
-                  fields={fields}
-                  onToggleField={handleToggleField}
-                  generating={generating}
-                />
+                <div data-tour="credential-card">
+                  <CredentialCard
+                    fields={fields}
+                    onToggleField={handleToggleField}
+                    generating={generating}
+                  />
+                </div>
 
                 {/* Generate proof button */}
                 <Button
@@ -216,6 +219,7 @@ export default function WalletPage() {
                   disabled={generating || disclosedCount === 0}
                   size="lg"
                   className="w-full bg-gradient-quantum text-primary-foreground shadow-glow hover:opacity-90 disabled:opacity-40"
+                  data-tour="proof-generate-btn"
                 >
                   {generating ? (
                     <>
