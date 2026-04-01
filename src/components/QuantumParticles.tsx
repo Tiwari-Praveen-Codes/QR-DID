@@ -12,7 +12,11 @@ interface Particle {
   pulseSpeed: number;
 }
 
-export default function QuantumParticles() {
+interface Props {
+  subtle?: boolean;
+}
+
+export default function QuantumParticles({ subtle = false }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
 
