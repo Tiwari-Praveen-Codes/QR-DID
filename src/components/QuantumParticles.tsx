@@ -44,8 +44,8 @@ export default function QuantumParticles({ subtle = false }: Props) {
     resize();
     window.addEventListener('resize', resize);
 
-    const COUNT = 60;
-    const CONNECTION_DIST = 140;
+    const COUNT = subtle ? 25 : 60;
+    const CONNECTION_DIST = subtle ? 120 : 140;
     const particles: Particle[] = [];
 
     for (let i = 0; i < COUNT; i++) {
