@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import QuantumParticles from '@/components/QuantumParticles';
 import { motion } from 'framer-motion';
 import { Upload, Loader2, ScanLine } from 'lucide-react';
 import QRScanner from '@/components/QRScanner';
@@ -128,7 +129,8 @@ export default function VerifierPage() {
   }, [addLog]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
+      <QuantumParticles subtle />
       <Navigation />
       <div className="container mx-auto px-4 pb-16 pt-24">
         <motion.div

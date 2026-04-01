@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
+import QuantumParticles from '@/components/QuantumParticles';
 import { motion } from 'framer-motion';
 import { Key, Fingerprint, Send, Loader2 } from 'lucide-react';
 import QRProofDisplay from '@/components/QRProofDisplay';
@@ -141,7 +142,8 @@ export default function WalletPage() {
   const disclosedCount = fields.filter(f => f.disclosed).length;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
+      <QuantumParticles subtle />
       <Navigation />
       <div className="container mx-auto px-4 pb-16 pt-24">
         <motion.div

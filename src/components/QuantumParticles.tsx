@@ -12,7 +12,11 @@ interface Particle {
   pulseSpeed: number;
 }
 
-export default function QuantumParticles() {
+interface Props {
+  subtle?: boolean;
+}
+
+export default function QuantumParticles({ subtle = false }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
 
@@ -40,8 +44,8 @@ export default function QuantumParticles() {
     resize();
     window.addEventListener('resize', resize);
 
-    const COUNT = 60;
-    const CONNECTION_DIST = 140;
+    const COUNT = subtle ? 25 : 60;
+    const CONNECTION_DIST = subtle ? 120 : 140;
     const particles: Particle[] = [];
 
     for (let i = 0; i < COUNT; i++) {
@@ -52,7 +56,7 @@ export default function QuantumParticles() {
         vy: (Math.random() - 0.5) * 0.4,
         r: Math.random() * 2 + 1,
         hue: Math.random() > 0.5 ? 173 : 270, // teal or purple
-        alpha: Math.random() * 0.5 + 0.3,
+        alpha: subtle ? Math.random() * 0.25 + 0.1 : Math.random() * 0.5 + 0.3,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: Math.random() * 0.02 + 0.01,
       });
