@@ -205,11 +205,13 @@ export default function WalletPage() {
                 )}
 
                 {/* Credential card */}
-                <CredentialCard
-                  fields={fields}
-                  onToggleField={handleToggleField}
-                  generating={generating}
-                />
+                <div data-tour="credential-card">
+                  <CredentialCard
+                    fields={fields}
+                    onToggleField={handleToggleField}
+                    generating={generating}
+                  />
+                </div>
 
                 {/* Generate proof button */}
                 <Button
