@@ -14,6 +14,7 @@ const navItems = [
 export default function Navigation() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { start, active } = useWalkthrough();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
