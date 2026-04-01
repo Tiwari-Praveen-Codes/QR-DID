@@ -56,7 +56,7 @@ export default function QuantumParticles({ subtle = false }: Props) {
         vy: (Math.random() - 0.5) * 0.4,
         r: Math.random() * 2 + 1,
         hue: Math.random() > 0.5 ? 173 : 270, // teal or purple
-        alpha: Math.random() * 0.5 + 0.3,
+        alpha: subtle ? Math.random() * 0.25 + 0.1 : Math.random() * 0.5 + 0.3,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: Math.random() * 0.02 + 0.01,
       });
