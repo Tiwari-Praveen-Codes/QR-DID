@@ -71,7 +71,7 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button asChild size="lg" className="bg-gradient-quantum font-semibold text-primary-foreground shadow-glow hover:opacity-90 px-8">
+              <Button asChild size="lg" className="bg-gradient-quantum font-semibold text-primary-foreground shadow-glow hover:opacity-90 px-8" data-tour="open-wallet-btn">
                 <Link to="/wallet">
                   Open Wallet
                   <ArrowRight className="ml-2 h-4 w-4" />
