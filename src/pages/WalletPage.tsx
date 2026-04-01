@@ -163,6 +163,7 @@ export default function WalletPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="rounded-xl border border-dashed border-border bg-gradient-card p-8 text-center"
+                data-tour="keygen-section"
               >
                 <Key className="mx-auto h-10 w-10 text-primary/40" />
                 <h3 className="mt-4 text-base font-semibold text-foreground">Generate SPHINCS+ Keypair</h3>
