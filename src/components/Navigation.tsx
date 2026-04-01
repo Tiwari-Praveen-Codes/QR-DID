@@ -44,6 +44,15 @@ export default function Navigation() {
               {item.label}
             </Link>
           ))}
+          {!active && (
+            <button
+              onClick={start}
+              className="ml-2 flex items-center gap-1.5 rounded-md border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
+            >
+              <Compass className="h-3.5 w-3.5" />
+              Guided Tour
+            </button>
+          )}
         </div>
 
         {/* Mobile toggle */}
