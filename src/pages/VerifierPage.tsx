@@ -122,11 +122,13 @@ export default function VerifierPage() {
       const parsed = JSON.parse(data);
       addLog({ type: 'data', text: `Merkle root: ${parsed.r?.slice(0, 32)}...` });
       addLog({ type: 'data', text: `Disclosed fields: ${parsed.d?.join(', ')}` });
-      addLog({ type: 'info', text: 'QR proof received — click Verify to check' });
+      addLog({ type: 'info', text: 'QR proof received — auto-verifying...' });
     } catch {
       addLog({ type: 'data', text: `Raw payload received (${data.length} chars)` });
     }
-  }, [addLog]);
+    // Auto-trigger verification after QR scan
+    setTimeout(() => handleVerify(), 500);
+  }, [addLog, handleVerify]);
 
   return (
     <div className="relative min-h-screen bg-background">
